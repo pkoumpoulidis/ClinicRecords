@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="ClinicRecords/App.axaml" value="ClinicRecords/ClinicRecords.csproj" />
+        <entry key="ClinicRecords/Controls/IconButton.axaml" value="ClinicRecords/ClinicRecords.csproj" />
+        <entry key="ClinicRecords/Resources/GlobalThemes.axaml" value="ClinicRecords/ClinicRecords.csproj" />
+        <entry key="ClinicRecords/Resources/SvgIcons.axaml" value="ClinicRecords/ClinicRecords.csproj" />
+        <entry key="ClinicRecords/Views/MainWindow.axaml" value="ClinicRecords/ClinicRecords.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

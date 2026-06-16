@@ -1,0 +1,216 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:ClinicRecords.Controls">
+    <Design.PreviewWith>
+        <StackPanel
+            Orientation="Horizontal">
+            <ThemeVariantScope RequestedThemeVariant="Light">
+                <Border
+                    Padding="12"
+                    Background="{DynamicResource Brush.Background}">
+                    <StackPanel Spacing="12" Width="200">
+                        <controls:IconButton Text="Icon Left" IconPlacement="Left" />
+                        <controls:IconButton Text="Icon Right" IconPlacement="Right" />
+                        <controls:IconButton Text="Icon Top" IconPlacement="Top" />
+                        <controls:IconButton Text="Icon Bottom" IconPlacement="Bottom" />
+                        <controls:IconButton Text="No Border" BorderThickness="0" />
+                    </StackPanel>
+                </Border>
+            </ThemeVariantScope>
+        
+            <ThemeVariantScope RequestedThemeVariant="Dark">
+                <Border
+                    Padding="12"
+                    Background="{DynamicResource Brush.Background}">
+                    <StackPanel Spacing="12" Width="200">
+                        <controls:IconButton Text="Icon Left" IconPlacement="Left" />
+                        <controls:IconButton Text="Icon Right" IconPlacement="Right" />
+                        <controls:IconButton Text="Icon Top" IconPlacement="Top" />
+                        <controls:IconButton Text="Icon Bottom" IconPlacement="Bottom" />
+                        <controls:IconButton Text="No Border" BorderThickness="0" />
+                    </StackPanel>
+                </Border>
+            </ThemeVariantScope>
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <Style Selector="controls|IconButton">
+        <!-- Set Defaults -->
+        
+        <!-- Border - Button Container -->
+        <Setter Property="Background" Value="{DynamicResource Brush.SurfaceAlt}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="8"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        
+        <!-- Button Text -->
+        <Setter Property="Text" Value="Icon Button"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.TextPrimary}"/>
+        <Setter Property="FontSize" Value="12"/>
+        
+        <!-- Button Icon -->
+        <Setter Property="Icon" Value="{StaticResource Icon.Heart}"/>
+        <Setter Property="IconSize" Value="14"/>
+        <Setter Property="IconColor" Value="{DynamicResource Brush.TextPrimary}"/>
+        <Setter Property="Spacing" Value="6" />
+        
+        <!-- Effects -->
+        <Setter Property="HoverBackground" Value="{DynamicResource Brush.Surface}"/>
+        <Setter Property="HoverForeground" Value="{DynamicResource Brush.TextSecondary}"/>
+        <Setter Property="HoverIconColor" Value="{DynamicResource Brush.TextSecondary}"/>
+        
+        <Setter Property="PressedBackground" Value="{DynamicResource Brush.Background}"/>
+        <Setter Property="PressedForeground" Value="{DynamicResource Brush.TextMuted}"/>
+        <Setter Property="PressedIconColor" Value="{DynamicResource Brush.TextMuted}"/>
+        <Setter Property="TransitionDuration" Value="0:0:0.15" />
+        
+        <Setter Property="Template">
+            <ControlTemplate>
+                <!-- Button Border and Background -->
+                <Border
+                    Name="PartRoot"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Padding="{TemplateBinding Padding}"
+                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                    
+                    <Border.Transitions>
+                        <Transitions>
+                            <BrushTransition
+                                Property="Background"
+                                Duration="{Binding TransitionDuration,
+                                   RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Transitions>
+                    </Border.Transitions>
+                    
+                    <!-- Stack Panel for content alignment -->
+                    <Grid
+                        Name="PartContentGrid"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ColumnDefinitions="Auto, Auto"
+                        RowDefinitions="Auto, Auto">
+                        
+                        <!-- Button Icon -->
+                        <PathIcon
+                            Name="PartPathIcon"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Width="{TemplateBinding IconSize}"
+                            Height="{TemplateBinding IconSize}"
+                            Foreground="{TemplateBinding IconColor}"
+                            Data="{TemplateBinding Icon}">
+                            
+                            <PathIcon.Transitions>
+                                <Transitions>
+                                    <BrushTransition
+                                        Property="Foreground"
+                                        Duration="{Binding TransitionDuration,
+                                   RelativeSource={RelativeSource TemplatedParent}}" />
+                                </Transitions>
+                            </PathIcon.Transitions>
+                            
+                        </PathIcon>
+                        
+                        <!-- Button Text -->
+                        <TextBlock
+                            Name="PartTextBlock"
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            TextAlignment="Center"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="{Binding TextMargin, RelativeSource={RelativeSource TemplatedParent}}"
+                            Text="{TemplateBinding Text}" 
+                            Foreground="{TemplateBinding Foreground}"
+                            FontSize="{TemplateBinding FontSize}">
+                            
+                            <TextBlock.Transitions>
+                                <Transitions>
+                                    <BrushTransition
+                                        Property="Foreground"
+                                        Duration="{Binding TransitionDuration,
+                                   RelativeSource={RelativeSource TemplatedParent}}" />
+                                </Transitions>
+                            </TextBlock.Transitions>
+                            
+                        </TextBlock>
+                    </Grid>
+                    
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Left -->
+        <Style Selector="^:icon-left /template/ PathIcon#PartPathIcon">
+            <Setter Property="Grid.Row" Value="0" />
+            <Setter Property="Grid.Column" Value="0" />
+        </Style>
+
+        <Style Selector="^:icon-left /template/ TextBlock#PartTextBlock">
+            <Setter Property="Grid.Row" Value="0" />
+            <Setter Property="Grid.Column" Value="1" />
+        </Style>
+
+        <!-- Right -->
+        <Style Selector="^:icon-right /template/ PathIcon#PartPathIcon">
+            <Setter Property="Grid.Row" Value="0" />
+            <Setter Property="Grid.Column" Value="1" />
+        </Style>
+
+        <Style Selector="^:icon-right /template/ TextBlock#PartTextBlock">
+            <Setter Property="Grid.Row" Value="0" />
+            <Setter Property="Grid.Column" Value="0" />
+        </Style>
+
+        <!-- Top -->
+        <Style Selector="^:icon-top /template/ PathIcon#PartPathIcon">
+            <Setter Property="Grid.Row" Value="0" />
+            <Setter Property="Grid.Column" Value="0" />
+            <Setter Property="Grid.ColumnSpan" Value="2" />
+        </Style>
+
+        <Style Selector="^:icon-top /template/ TextBlock#PartTextBlock">
+            <Setter Property="Grid.Row" Value="1" />
+            <Setter Property="Grid.Column" Value="0" />
+            <Setter Property="Grid.ColumnSpan" Value="2" />
+        </Style>
+
+        <!-- Bottom -->
+        <Style Selector="^:icon-bottom /template/ PathIcon#PartPathIcon">
+            <Setter Property="Grid.Row" Value="1" />
+            <Setter Property="Grid.Column" Value="0" />
+            <Setter Property="Grid.ColumnSpan" Value="2" />
+        </Style>
+
+        <Style Selector="^:icon-bottom /template/ TextBlock#PartTextBlock">
+            <Setter Property="Grid.Row" Value="0" />
+            <Setter Property="Grid.Column" Value="0" />
+            <Setter Property="Grid.ColumnSpan" Value="2" />
+        </Style> 
+        
+        <Style Selector="^:pointerover">
+            <Setter Property="Background"
+                    Value="{Binding HoverBackground, RelativeSource={RelativeSource Self}}" />
+            <Setter Property="Foreground"
+                    Value="{Binding HoverForeground, RelativeSource={RelativeSource Self}}" />
+            <Setter Property="IconColor"
+                    Value="{Binding HoverIconColor, RelativeSource={RelativeSource Self}}" />
+        </Style>
+        
+        <Style Selector="^:pressed">
+            <Setter Property="Background"
+                    Value="{Binding PressedBackground, RelativeSource={RelativeSource Self}}"/>
+            <Setter Property="Foreground"
+                    Value="{Binding PressedForeground, RelativeSource={RelativeSource Self}}"/>
+            <Setter Property="IconColor"
+                    Value="{Binding PressedIconColor, RelativeSource={RelativeSource Self}}" />
+        </Style>
+    </Style>
+</Styles>
