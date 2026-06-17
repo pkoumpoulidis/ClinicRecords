@@ -23,7 +23,8 @@
                     Padding="12"
                     Background="{DynamicResource Brush.Background}">
                     <StackPanel Spacing="12" Width="200">
-                        <controls:IconButton Text="Icon Left" IconPlacement="Left" />
+                        <controls:IconButton Text="Icon Left" 
+                                             IconPlacement="Left"/>
                         <controls:IconButton Text="Icon Right" IconPlacement="Right" />
                         <controls:IconButton Text="Icon Top" IconPlacement="Top" />
                         <controls:IconButton Text="Icon Bottom" IconPlacement="Bottom" />
@@ -80,6 +81,7 @@
                     HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                     VerticalAlignment="{TemplateBinding VerticalAlignment}">
                     
+                    <!-- Border-Background Transition Effect -->
                     <Border.Transitions>
                         <Transitions>
                             <BrushTransition
@@ -107,6 +109,7 @@
                             Foreground="{TemplateBinding IconColor}"
                             Data="{TemplateBinding Icon}">
                             
+                           <!-- Icon Transition Effect --> 
                             <PathIcon.Transitions>
                                 <Transitions>
                                     <BrushTransition
@@ -131,6 +134,7 @@
                             Foreground="{TemplateBinding Foreground}"
                             FontSize="{TemplateBinding FontSize}">
                             
+                            <!-- Text Transition Effect -->
                             <TextBlock.Transitions>
                                 <Transitions>
                                     <BrushTransition
@@ -195,22 +199,34 @@
             <Setter Property="Grid.ColumnSpan" Value="2" />
         </Style> 
         
-        <Style Selector="^:pointerover">
+        <Style Selector="^:pointerover /template/ Border#PartRoot">
             <Setter Property="Background"
-                    Value="{Binding HoverBackground, RelativeSource={RelativeSource Self}}" />
+                    Value="{Binding HoverBackground, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+
+        <Style Selector="^:pointerover /template/ TextBlock#PartTextBlock">
             <Setter Property="Foreground"
-                    Value="{Binding HoverForeground, RelativeSource={RelativeSource Self}}" />
-            <Setter Property="IconColor"
-                    Value="{Binding HoverIconColor, RelativeSource={RelativeSource Self}}" />
+                    Value="{Binding HoverForeground, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+
+        <Style Selector="^:pointerover /template/ PathIcon#PartPathIcon">
+            <Setter Property="Foreground"
+                    Value="{Binding HoverIconColor, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
         
-        <Style Selector="^:pressed">
+        <Style Selector="^:pressed /template/ Border#PartRoot">
             <Setter Property="Background"
-                    Value="{Binding PressedBackground, RelativeSource={RelativeSource Self}}"/>
+                    Value="{Binding PressedBackground, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+
+        <Style Selector="^:pressed /template/ TextBlock#PartTextBlock">
             <Setter Property="Foreground"
-                    Value="{Binding PressedForeground, RelativeSource={RelativeSource Self}}"/>
-            <Setter Property="IconColor"
-                    Value="{Binding PressedIconColor, RelativeSource={RelativeSource Self}}" />
+                    Value="{Binding PressedForeground, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+
+        <Style Selector="^:pressed /template/ PathIcon#PartPathIcon">
+            <Setter Property="Foreground"
+                    Value="{Binding PressedIconColor, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
     </Style>
 </Styles>

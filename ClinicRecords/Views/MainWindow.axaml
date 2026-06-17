@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:ClinicRecords.Controls"
+        xmlns:pages="clr-namespace:ClinicRecords.Views.Pages"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="ClinicRecords.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -16,18 +17,8 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <Grid
-        ColumnDefinitions="Auto, Auto, Auto">
-        <TextBlock 
-            Grid.Column="0"
-            Background="Red"
-            Text="{Binding Greeting}" />
-        <controls:IconButton
-            Grid.Column="1"
-            HoverBackground="BlueViolet"
-            TransitionDuration="0:0:0.15"
-            VerticalAlignment="Center"/>
-        <Button Grid.Column="2"></Button>
+    <Grid>
+        <pages:PatientsListView/>
     </Grid>
 
 </Window>

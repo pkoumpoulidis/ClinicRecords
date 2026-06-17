@@ -12,6 +12,8 @@
             <SolidColorBrush x:Key="Brush.Surface" Color="#FFF8FAFC" />
             <SolidColorBrush x:Key="Brush.SurfaceAlt" Color="#FFF1F5F9" />
             <SolidColorBrush x:Key="Brush.Border" Color="#FFE2E8F0" />
+            
+            <SolidColorBrush x:Key="Brush.ForegroundSpecial" Color="#FFF8FAFC"/>
 
             <SolidColorBrush x:Key="Brush.TextPrimary" Color="#FF0F172A" />
             <SolidColorBrush x:Key="Brush.TextSecondary" Color="#FF475569" />
